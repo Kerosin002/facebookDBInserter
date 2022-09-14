@@ -1,11 +1,10 @@
 import pyodbc
-#from fbgpinsert import entryGL, entryGN, anonCh
 def fbdbi(gpn,link,anon):
-    conn=pyodbc.connect('DRIVER=ODBC Driver 17 for SQL Server;SERVER=DESKTOP-INVIIFQ;DATABASE=El_Time_FaceBook;Trusted_Connection=yes')
+    conn=pyodbc.connect('DRIVER={SQL Server Native Client 11.0};SERVER=main-server-nych.database.windows.net;DATABASE=ElTime;UID=CloudSA66f830c2;PWD=Levis2009')
     anon=str(anon)
     cursor=conn.cursor()
 
-    cursor.execute("INSERT INTO FBGPtest(GPname,Link,AnonPost) VALUES('"+gpn+"','"+link+"',"+anon+")")
+    cursor.execute("INSERT INTO FaceBookGroups(GroupName,Link,AnonPost) VALUES(N'"+gpn+"','"+link+"','"+anon+"')")
     conn.commit()
     cursor.close()
     conn.close()
